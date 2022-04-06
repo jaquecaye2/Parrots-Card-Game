@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #EEF9BF;
+}
+
+div.titulo{
+    margin: 0 auto;
+    width: 68%;
+}
+
+h1{
+    color: #75B79E;
+    font-size: 56px;
+    font-weight: 700;
+    text-align: center;
+    margin: 40px 0px;
+}
+
+div.cartas{
+    width: 68%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+div.carta{
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    width: 117px;
+    height: 146px;
+    margin: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.carta img{
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 600px){
+    h1{
+        font-size: 36px;
+    }
+
+    div.cartas{
+        justify-content: center;
+    }
+}
