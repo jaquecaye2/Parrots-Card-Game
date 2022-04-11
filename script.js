@@ -1,8 +1,6 @@
-//let quantidadeCartas = prompt("Com quantas cartas você quer jogar?")
+let quantidadeCartas = prompt("Com quantas cartas você quer jogar?")
 
-let quantidadeCartas = 6
-
-/*if (quantidadeCartas < 4 || quantidadeCartas > 14 || quantidadeCartas % 2 !== 0) {
+if (quantidadeCartas < 4 || quantidadeCartas > 14 || quantidadeCartas % 2 !== 0) {
     while (quantidadeCartas < 4 || quantidadeCartas > 14 || quantidadeCartas % 2 !== 0){
     if (quantidadeCartas < 4 || quantidadeCartas > 14) {
         alert("Necessário inserir um valor entre 4 e 14")
@@ -13,16 +11,17 @@ let quantidadeCartas = 6
     }
     quantidadeCartas = prompt("Com quantas cartas você quer jogar?")
     }
-}*/
+}
 
 function comparador() { 
 	return Math.random() - 0.5; 
 }
 
 let listaCartas = []
+let cartas = ""
 
 function distribuirCartas() {
-    let cartas = document.querySelector(".cartas")
+    cartas = document.querySelector(".cartas")
 
     let listaImagens = ["bobrossparrot.gif", "bobrossparrot.gif", "explodyparrot.gif", "explodyparrot.gif","fiestaparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "metalparrot.gif", "revertitparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "unicornparrot.gif"]
 
@@ -47,6 +46,30 @@ function distribuirCartas() {
 }
 
 distribuirCartas();
+
+let contadorTempo = 0
+let minutos = 0
+let segundos = 0
+
+function contador(){
+    contadorTempo++
+
+    if (contadorTempo < 60){
+        minutos = 0
+        segundos = contadorTempo
+    } else {
+        minutos = (contadorTempo/60).toFixed(0)
+        segundos = contadorTempo - (minutos*60)
+    }
+
+    if (segundos < 10){
+        document.querySelector(".contador").innerHTML = `0${minutos}:0${segundos}`
+    } else {
+        document.querySelector(".contador").innerHTML = `0${minutos}:${segundos}`
+    }
+}
+
+setInterval(contador,1000)
 
 let parDeCarta = []
 let imagemCarta1
@@ -78,7 +101,24 @@ function compararCartas(){
         parDeCarta = []
 
         if (cartasViradas.length == quantidadeCartas) {
-            alert(`Você ganhou!! Foram necessárias ${contJogadas} jogadas`)
+            alert(`Parabéns, você ganhou!! Foram necessárias ${contJogadas} jogadas. Você terminou o jogo em: ${minutos}min e ${segundos}s.`)
+            let novoJogo = prompt("Você quer jogar novamente? [sim] [nao]")
+            if (novoJogo === "sim"){
+                quantidadeCartas = 0
+                listaCartas = []
+                cartas.innerHTML = ""
+                quantidadeCartas = prompt("Com quantas cartas você quer jogar?")
+                distribuirCartas()
+                contadorTempo = 0
+                contJogadas = 0
+                parDeCarta = []
+                cartasViradas = []
+            } else if (novoJogo === "nao"){
+                alert("Obrigada por jogar!")
+            } else if (novoJogo !== "sim" || novoJogo !== "nao"){
+                alert("Informe um valor válido (sim ou nao)")
+                novoJogo = prompt("Você quer jogar novamente? [sim] [nao]")
+            } 
         }
 }
 
