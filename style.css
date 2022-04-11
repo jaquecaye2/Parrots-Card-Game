@@ -83,6 +83,10 @@ div.contador{
     color: #FFF;
 }
 
+div.escondido{
+    display: none;
+}
+
 
 @media (max-width: 600px){
     h1{

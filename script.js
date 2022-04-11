@@ -115,7 +115,14 @@ function compararCartas(){
                 cartasViradas = []
             } else if (novoJogo === "nao"){
                 alert("Obrigada por jogar!")
-            } else if (novoJogo !== "sim" || novoJogo !== "nao"){
+                listaCartas = []
+                cartas.innerHTML = ""
+                contJogadas = 0
+                parDeCarta = []
+                cartasViradas = []
+                contadorTempo = 0
+                document.querySelector(".contador").classList.add("escondido")
+            } else if (novoJogo !== "sim" && novoJogo !== "nao"){
                 alert("Informe um valor válido (sim ou nao)")
                 novoJogo = prompt("Você quer jogar novamente? [sim] [nao]")
             } 
