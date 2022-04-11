@@ -28,21 +28,61 @@ div.cartas{
 }
 
 div.carta{
-    background-color: #A7E9AF;
-    border: 1px solid #99CEA8;
     width: 117px;
     height: 146px;
+    position: relative;
     margin: 17px;
+    cursor: pointer;
+}
+
+div.face{
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d; 
 }
 
 div.carta img{
     width: 100px;
     height: 100px;
 }
+
+.back-face {
+    transform: rotateY(180deg);
+}
+
+.girar1 {
+    transform: rotateY(0deg);
+  }
+
+.girar2 {
+    transform: rotateY(-180deg);
+}
+
+div.contador{
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    width: 100px;
+    height: 50px;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #FFF;
+}
+
 
 @media (max-width: 600px){
     h1{
